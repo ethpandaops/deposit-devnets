@@ -35,6 +35,16 @@
         unattended_package_blacklist: [docker-ce, docker-ce-cli]
       tags: [unattended-upgrades]
 
+- hosts: bootnode
+  become: true
+  roles:
+    - role: eth_testnet_config
+      tags: [ethereum, eth_testnet_config]
+    - role: validator_keys
+      tags: [ethereum, validator_keys]
+    - role: ethpandaops.general.ethereum_node
+      tags: [ethereum, ethereum_node]
+
 - hosts: ethereum_node
   serial: "{{ batch_count | default('100%') }}"
   become: true

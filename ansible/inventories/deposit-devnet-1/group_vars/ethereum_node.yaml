@@ -1,5 +1,4 @@
 ethereum_cl_bootnodes:
-  - "{{ hostvars['deposit-devnets-lighthouse-besu-001']['cl_bootnode_fact_enr'] }}"
   - "{{ hostvars['deposit-devnets-lighthouse-besu-001']['ethereum_node_fact_cl_enr'] }}"
 
 ethereum_el_bootnode: "{{ hostvars['deposit-devnets-lighthouse-besu-001']['ethereum_node_fact_el_enode'] }}"

@@ -18,3 +18,34 @@ external_roles
 parsedBeaconState.json.big
 # Vendored ansible roles and collections defined in 'requirements.yaml'
 vendor/*
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Ansible
+ansible/vendor/**
+ansible/tmp/**
+*.retry
+
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+*.tfvars
+*.tfvars.json
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+
+# Sops
+**/.decrypted*
+
+# Validator keys
+**/files/validator_keys/*
+network-configs/**/mnemonics.yaml
