@@ -22,7 +22,3 @@
         src: "{{ item.src }}"
         dest: "{{ item.dest }}"
       loop: "{{ validator_keys_sync_files }}"
-
-- name: Modify permissions to match user-group inside docker image
-  shell: chown -R "lighthouse" /data/lighthouse-validator
-  become: true
