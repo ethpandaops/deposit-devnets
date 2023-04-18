@@ -1,0 +1,27 @@
+%{ for gid, group in groups ~}
+[${replace(gid, "-", "_")}]
+%{ for key, host in hosts ~}
+%{ if host.group == gid ~}
+${host.hostname} ansible_host=${host.ip} cloud=${host.cloud} cloud_region=${host.region}
+%{ endif ~}
+%{ endfor ~}
+
+%{ endfor ~}
+
+[lighthouse:children]
+lighthouse_besu
+
+[besu:children]
+lighthouse_besu
+
+[consensus:children]
+lighthouse
+
+[execution:children]
+besu
+
+[validator:children]
+beacon
+
+[beacon:children]
+consensus

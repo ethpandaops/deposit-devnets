@@ -1,0 +1,20 @@
+.DS_Store
+secret.sh
+validator_prep
+validator_keys
+*.tar.gz
+selected_validator_keys
+.idea
+vars.env
+mnemonics.yaml
+scripts/venv
+backups
+explorerdata
+mergenet.yaml
+dshackle.yml
+.vscode/settings.json
+enrs.json
+external_roles
+parsedBeaconState.json.big
+# Vendored ansible roles and collections defined in 'requirements.yaml'
+vendor/*

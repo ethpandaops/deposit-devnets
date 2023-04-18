@@ -1,0 +1,2 @@
+# Vendored ansible roles and collections defined in 'requirements.yaml'
+vendor/*

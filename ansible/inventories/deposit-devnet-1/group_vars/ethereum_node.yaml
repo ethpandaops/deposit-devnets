@@ -1,0 +1,9 @@
+ethereum_cl_bootnodes:
+  - "{{ hostvars['deposit-devnets-lighthouse-besu-001']['cl_bootnode_fact_enr'] }}"
+  - "{{ hostvars['deposit-devnets-lighthouse-besu-001']['ethereum_node_fact_cl_enr'] }}"
+
+ethereum_el_bootnode: "{{ hostvars['deposit-devnets-lighthouse-besu-001']['ethereum_node_fact_el_enode'] }}"
+
+# role: ethpandaops.general.prometheus
+prometheus_remote_write_username: "{{ secret_prometheus_remote_write.username }}"
+prometheus_remote_write_password: "{{ secret_prometheus_remote_write.password }}"

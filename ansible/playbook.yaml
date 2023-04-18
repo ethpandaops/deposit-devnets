@@ -1,0 +1,47 @@
+- import_playbook: ethpandaops.general.bootstrap_server
+  tags: [init-server, bootstrap]
+
+- hosts: all
+  serial: "{{ batch_count | default('100%') }}"
+  become: true
+  roles:
+    - role: robertdebock.fail2ban
+      tags: [init-server, fail2ban]
+    - role: geerlingguy.docker
+      tags: [init-server, docker]
+    - role: geerlingguy.pip
+      pip_install_packages:
+        - name: docker
+        - name: docker-compose
+      tags: [init-server, pip]
+    - role: ethpandaops.general.docker_cleanup
+      tags: [init-server, docker_cleanup]
+    - role: ethpandaops.general.docker_network
+      tags: [init-server, docker_network]
+    - role: nickhammond.logrotate
+      tags: [init-server, logrotate]
+    - role: ethpandaops.general.node_exporter
+      tags: [init-server, node_exporter]
+    - role: ethpandaops.general.prometheus
+      tags: [init-server, prometheus]
+
+- hosts: all
+  become: true
+  roles:
+    - role: jnv.unattended-upgrades
+      when: unattended_update_days is defined
+      vars:
+        unattended_automatic_reboot: true
+        unattended_package_blacklist: [docker-ce, docker-ce-cli]
+      tags: [unattended-upgrades]
+
+- hosts: ethereum_node
+  serial: "{{ batch_count | default('100%') }}"
+  become: true
+  roles:
+    - role: eth_testnet_config
+      tags: [ethereum, eth_testnet_config]
+    - role: validator_keys
+      tags: [ethereum, validator_keys]
+    - role: ethpandaops.general.ethereum_node
+      tags: [ethereum, ethereum_node]
