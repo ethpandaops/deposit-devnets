@@ -5,14 +5,17 @@ secret_prometheus_remote_write:
 secret_nginx_shared_basic_auth:
     name: ENC[AES256_GCM,data:+Kn3,iv:JiGNhNOwMPigHT7s5VTjLPkRE6XuZNo3XlWGNNhj4ew=,tag:s3buqedEkeyZtQ9a3ZL+9g==,type:str]
     password: ENC[AES256_GCM,data:6zU/+5q8+XGtxCvO0deL,iv:EhjgTO6RIjrpxkNvqenfEd+AQ8TyEq6eTvtG19UEQq8=,tag:3XeeOmG8MryI08N9ysUcHg==,type:str]
+secret_zerossl:
+    ACME_EAB_KID: ENC[AES256_GCM,data:n5njFp2fi+nAVgpnhDApd0enCKZCOQ==,iv:nVVi8J7UWXJWPOmXRvjyKuLrOa24kZeZIG/545EYhV8=,tag:1R5t7ZbQ3NROcmmhsBu/Lg==,type:str]
+    ACME_EAB_HMAC_KEY: ENC[AES256_GCM,data:0roCJ2/pj3wkgFfqNZXXMLjmyhtWlWrdPzL0+Pf4pVZ/nqhrg+ShsyWfs7cc+AG/lzWfGXnGb5cQihLXw+datv4/NSsy/ROszVnvv8YIDJ/BJnv0SK8=,iv:Khtk82395zHG3RvFU8qriIryuHyibLiXARGHvn3M59s=,tag:49zRJRVoVXMtpGw8EaP3iA==,type:str]
 sops:
     kms: []
     gcp_kms: []
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2023-04-18T09:37:49Z"
-    mac: ENC[AES256_GCM,data:/ebjn5DE1xuVLYJPlF9DDargW8loSFjztrfRqIZIimeR6/02wFrdI4427d/DpHiBjZ1ys+ubrr1aUvLV2as0SfCn03Xu7fbvoB4ut5BBYpPp19bcjAAfK1VRzlx/vyPxu8bfQ5pPTQznELplIyVUTGHyLWK0hPQtASMwItzeivs=,iv:DacP/2rMPab+/MXf5U+LPllMriAExnKCMciCLw1AIYU=,tag:kKw9gAXpQNznPstfwCanbA==,type:str]
+    lastmodified: "2023-04-19T12:29:25Z"
+    mac: ENC[AES256_GCM,data:Y4ofrQIY9pKKmZbQnZcIDaW/avJ+xpxtt+XhvbR2SIhTfW3w33K7H4vvOJXzi13IVD3ZqwJaauEjq0ZBMJfophFAQzN53uQt2sxaX+IRMrFJZ4GD6II4HpwwB0N9KdnZvg61tzIYGqTKn2cNMI+QV1ymGqGJaTqqjA6tAn5vSnM=,iv:EZXQgZFxfomtpfMk8P+I7IUzRpfJ6p3XYLRFVjI5HWg=,tag:+hKhZ3rv951AKDE4OVUdEg==,type:str]
     pgp:
         - created_at: "2023-04-12T19:24:34Z"
           enc: |-

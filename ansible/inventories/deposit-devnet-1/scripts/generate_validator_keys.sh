@@ -34,7 +34,7 @@ function prep_group {
   done
 }
 
-prep_group 1 "$VALIDATORS_MNEMONIC_0" 0 5 "deposit-devnets-lighthouse-besu" 64
+prep_group 1 "$VALIDATORS_MNEMONIC_0" 0 8 "deposit-devnets-lighthouse-besu" 64
 
 
 echo "$PRYSM_WALLET_PASSWORD" > $OUTPUT_DIR/prysm_wallet_pass.txt

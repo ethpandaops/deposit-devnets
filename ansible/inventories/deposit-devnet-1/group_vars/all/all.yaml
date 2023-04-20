@@ -30,11 +30,17 @@ bootstrap_additional_user_authorized_keys_github: >
     (bootstrap_default_user_authorized_keys_github_team_cl | default([]))
   }}
 
-# role: ethpandaops.general.ethereum_node
+# role: ethpandaops.general.ethereum_node enabled features
 ethereum_node_metrics_exporter_enabled: true
 ethereum_node_xatu_sentry_enabled: false
 ethereum_node_cl_validator_enabled: true
+ethereum_node_json_rpc_snooper_engine_enabled: true
+
+# role: ethpandaops.general.ethereum_node custom variables
 ethereum_node_cl_validator_fee_recipient: "0xf97e180c050e5Ab072211Ad2C213Eb5AEE4DF134"
+
+# role: ethpandaops.general.ethereum_node ports
+ethereum_node_json_rpc_snooper_engine_port: 8560
 ethereum_node_cl_ports_p2p_tcp: 9000
 ethereum_node_cl_ports_p2p_udp: 9000
 ethereum_node_cl_ports_http_beacon: 5052
@@ -68,6 +74,9 @@ docker_nginx_proxy_acme_companion_container_env:
   DEFAULT_EMAIL: "{{ docker_nginx_proxy_default_email }}"
   NGINX_PROXY_CONTAINER: "{{ docker_nginx_proxy_container_name }}"
   NGINX_DOCKER_GEN_CONTAINER: "{{ docker_nginx_proxy_docker_gen_container_name }}"
+  ACME_CA_URI: https://acme.zerossl.com/v2/DV90
+  ACME_EAB_KID: "{{ secret_zerossl.ACME_EAB_KID }}"
+  ACME_EAB_HMAC_KEY: "{{ secret_zerossl.ACME_EAB_HMAC_KEY }}"
 docker_nginx_proxy_container_networks: "{{ docker_networks_shared }}"
 docker_nginx_proxy_docker_gen_container_networks: "{{ docker_networks_shared }}"
 docker_nginx_proxy_acme_companion_container_networks: "{{ docker_networks_shared }}"

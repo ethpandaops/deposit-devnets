@@ -14,9 +14,13 @@ terraform {
       source  = "digitalocean/digitalocean"
       version = "~> 2.19.0"
     }
-    hcloud = {
-      source  = "hetznercloud/hcloud"
-      version = "~> 1.33.0"
+    cloudflare = {
+      source  = "cloudflare/cloudflare"
+      version = "~> 3.0"
+    }
+    sops = {
+      source  = "carlpett/sops"
+      version = "0.7.1"
     }
   }
 }
@@ -75,6 +79,9 @@ variable "digitalocean_vm_groups" {
         "003" = { }
         "004" = { }
         "005" = { }
+        "006" = { }
+        "007" = { }
+        "008" = { }
       },
     },
   ]
