@@ -13,6 +13,7 @@ bootstrap_default_user_authorized_keys_github_team_el:
 ethereum_node_el: besu
 
 # role: ethpandaops.general.besu
+besu_container_pull: true
 besu_container_image: "{{ default_ethereum_client_images.besu }}"
 besu_container_env:
   VIRTUAL_HOST: "{{ ethereum_node_rcp_hostname }}"
