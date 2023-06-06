@@ -8,14 +8,15 @@ secret_nginx_shared_basic_auth:
 secret_zerossl:
     ACME_EAB_KID: ENC[AES256_GCM,data:bxJpp3qOJz9l65TyuBs4xLA7ehCwKw==,iv:nVVi8J7UWXJWPOmXRvjyKuLrOa24kZeZIG/545EYhV8=,tag:saBdZ16nMu+6Fk2Fym+vGg==,type:str]
     ACME_EAB_HMAC_KEY: ENC[AES256_GCM,data:YVB73EBhibV3xZFw53sDh9ebQCygT6+8mdJEfV3WuglEA2e/QHr/pKaTR9uhgAEJ0JaZV9xlwRZGcEdcsSvGZE3PC7q+iViVGbPypci+ip8C9yCKVWI=,iv:Khtk82395zHG3RvFU8qriIryuHyibLiXARGHvn3M59s=,tag:eaYdve+JOGuiCUMPtihUNQ==,type:str]
+tx_fuzz_privatekey: ENC[AES256_GCM,data:1cjHFvzn2gFqEnIoYTXyib6bV8fxrsdd05EVtgfmglpPBsUWTDZ8StYvqc7LuMEeMuj+8ww3KAJOhD1GOJnnEg==,iv:IESJ3ALDWVtF488vpu59HxpwWE+l9CMZdpnSpNMeYEs=,tag:2mJ7CbmrTMNaHP7ExuD9mA==,type:str]
 sops:
     kms: []
     gcp_kms: []
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2023-04-26T10:37:00Z"
-    mac: ENC[AES256_GCM,data:vLZfnL63YIPX8ZEZHE0jXCGnySbAPUL8logY4sPj0olGb3TVvBDBs1oM0oPoVHJYefLKg2KPYNwc23N2EU4Y+I/ioc5yhTRH6sjTrZONefBRpVDy49SgA7JfWXqsa06uHZcM1LzkjqhCdfsxCxwtkdKF+VE3GZlq1rMkYuia01U=,iv:AK79sp8mfmVM32F0B1/Lvd2w9ZUPgETjNgZJO/xTDeg=,tag:6WYHKjnrdOYKqN7oFyTtoA==,type:str]
+    lastmodified: "2023-06-06T09:08:44Z"
+    mac: ENC[AES256_GCM,data:Z/nUVRz4rjPI7ccG4qTFfGHN5+5YlQ0p5ldx1qSMiz40KpSTSiLZRnmP1dhA9GkHTuipIjgzTItoOjUD0JvV3gWVS5lWuzjOvwYxKD0VPgeR+vYUMBDX1NL8pIAH2Xph2B9HpOW4AEEFAuOG/x1QttPw/eBE9AarwxsmqFrIj2A=,iv:ErI7bvpZwTKTLSO722t1h8FHTy8iD420iHwkf29n93E=,tag:bGmRqr200AuSVdvAvpy/Eg==,type:str]
     pgp:
         - created_at: "2023-04-26T10:38:31Z"
           enc: |-
