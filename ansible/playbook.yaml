@@ -68,3 +68,10 @@
   roles:
     - role: ethpandaops.general.tx_fuzz
       tags: [ ethereum, tx_fuzz ]
+
+- hosts: blockscout
+  serial: "{{ batch_count | default('100%') }}"
+  become: true
+  roles:
+    - role: ethpandaops.general.blockscout
+      tags: [blockscout]

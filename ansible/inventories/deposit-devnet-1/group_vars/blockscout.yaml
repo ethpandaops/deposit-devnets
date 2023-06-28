@@ -1,0 +1,60 @@
+blockscout_docker_networks: "{{ docker_networks_shared }}"
+blockscout_container_image: blockscout/blockscout:5.2.0
+blockscout_container_volumes:
+  - "{{ eth_testnet_config_dir }}/chainspec.json:/network-config/chainspec.json:ro"
+
+blockscout_container_env:
+  MIX_ENV: prod
+  PORT: '4000'
+  DATABASE_URL: postgresql://postgres:postgres@blockscout-database:5432/blockscout?ssl=false
+  # RPC Endpoint
+  ETHEREUM_JSONRPC_VARIANT: besu
+  ETHEREUM_JSONRPC_HTTP_URL: http://besu:8545
+  ETHEREUM_JSONRPC_WS_URL: ws://besu:8545
+  ETHEREUM_JSONRPC_TRACE_URL: http://besu:8545
+  # Network config
+  NETWORK: Ethereum
+  CHAIN_SPEC_PATH: /network-config/chainspec.json
+  SUBNETWORK: "{{ ethereum_network_name }}"
+  # Rate limiting
+  API_RATE_LIMIT_TIME_INTERVAL: 1s
+  API_RATE_LIMIT_BY_IP_TIME_INTERVAL: 5m
+  API_RATE_LIMIT: "50"
+  API_RATE_LIMIT_BY_KEY: "50"
+  API_RATE_LIMIT_BY_WHITELISTED_IP: "50"
+  API_RATE_LIMIT_WHITELISTED_IPS: ""
+  API_RATE_LIMIT_STATIC_API_KEY: ""
+  API_RATE_LIMIT_UI_V2_WITH_TOKEN: "5"
+  API_RATE_LIMIT_BY_IP: "3000"
+  API_RATE_LIMIT_HAMMER_REDIS_URL: redis://blockscout-cache:6379/1
+  API_RATE_LIMIT_UI_V2_TOKEN_TTL_IN_SECONDS: "18000"
+  # Account: https://docs.blockscout.com/for-developers/configuration-options/my-account-settings
+  ACCOUNT_ENABLED: "false"
+  # Smart contract verifier
+  MICROSERVICE_SC_VERIFIER_ENABLED: '"{{ blockscout_smart_contract_verifier_enabled }}"'
+  MICROSERVICE_SC_VERIFIER_URL: "http://{{ blockscout_smart_contract_verifier_container_name }}:8050/"
+  MICROSERVICE_SC_VERIFIER_TYPE: sc_verifier
+  MICROSERVICE_ETH_BYTECODE_DB_INTERVAL_BETWEEN_LOOKUPS: 10m
+  # Visualizer
+  MICROSERVICE_VISUALIZE_SOL2UML_ENABLED: '"{{ blockscout_visualizer_enabled }}"'
+  MICROSERVICE_VISUALIZE_SOL2UML_URL: "http://{{ blockscout_visualizer_container_name }}:8050/"
+  # Signature provider
+  MICROSERVICE_SIG_PROVIDER_ENABLED: '"{{ blockscout_sig_provider_enabled }}"'
+  MICROSERVICE_SIG_PROVIDER_URL: "http://{{ blockscout_sig_provider_container_name }}:8050/"
+  DECODE_NOT_A_CONTRACT_CALLS: "true"
+  # Other config
+  DISABLE_EXCHANGE_RATES: "true"
+  DISABLE_KNOWN_TOKENS: "true"
+  SHOW_PRICE_CHART: "false"
+  ENABLE_1559_SUPPORT: "true"
+  DISABLE_READ_API: "false"
+  DISABLE_WRITE_API: "true"
+  ENABLE_TXS_STATS: "false"
+  SHOW_TXS_CHART: "false"
+  INDEXER_COIN_BALANCES_BATCH_SIZE: "5"
+  BLOCK_TRANSFORMER: base
+  POOL_SIZE: "15"
+  SECRET_KEY_BASE: RMgI4C1HSkxsEjdhtGMfwAHfyT6CKWXOgzCboJflfSm4jeAlic52io05KB6mqzc5
+  ECTO_USE_SSL: "false"
+  LOGO: /images/blockscout_logo.svg
+  FOOTER_LOGO: /images/blockscout_logo.svg
