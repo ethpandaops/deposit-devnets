@@ -16,6 +16,7 @@ blockscout_container_env:
   NETWORK: Ethereum
   CHAIN_SPEC_PATH: /network-config/chainspec.json
   SUBNETWORK: "{{ ethereum_network_name }}"
+  BLOCK_TRANSFORMER: base
   # Rate limiting
   API_RATE_LIMIT_TIME_INTERVAL: 1s
   API_RATE_LIMIT_BY_IP_TIME_INTERVAL: 5m
@@ -42,17 +43,22 @@ blockscout_container_env:
   MICROSERVICE_SIG_PROVIDER_ENABLED: '"{{ blockscout_sig_provider_enabled }}"'
   MICROSERVICE_SIG_PROVIDER_URL: "http://{{ blockscout_sig_provider_container_name }}:8050/"
   DECODE_NOT_A_CONTRACT_CALLS: "true"
+  # Indexer
+  DISABLE_INDEXER: "false"
+  INDEXER_DISABLE_PENDING_TRANSACTIONS_FETCHER: "false"
+  INDEXER_DISABLE_INTERNAL_TRANSACTIONS_FETCHER: "false"
+  INDEXER_DISABLE_BLOCK_REWARD_FETCHER: "false"
+  INDEXER_DISABLE_ADDRESS_COIN_BALANCE_FETCHER: "false"
+  INDEXER_DISABLE_CATALOGED_TOKEN_UPDATER_FETCHER: "true"
+  INDEXER_DISABLE_EMPTY_BLOCKS_SANITIZER: "false"
   # Other config
-  DISABLE_EXCHANGE_RATES: "true"
-  DISABLE_KNOWN_TOKENS: "true"
-  SHOW_PRICE_CHART: "false"
-  ENABLE_1559_SUPPORT: "true"
-  DISABLE_READ_API: "false"
-  DISABLE_WRITE_API: "true"
-  ENABLE_TXS_STATS: "false"
+  API_V1_WRITE_METHODS_DISABLED: "true"
+  TXS_STATS_ENABLED: "false"
   SHOW_TXS_CHART: "false"
+  DISABLE_EXCHANGE_RATES: "true"
+  SHOW_PRICE_CHART: "false"
+  ENABLE_TXS_STATS: "false"
   INDEXER_COIN_BALANCES_BATCH_SIZE: "5"
-  BLOCK_TRANSFORMER: base
   POOL_SIZE: "15"
   SECRET_KEY_BASE: RMgI4C1HSkxsEjdhtGMfwAHfyT6CKWXOgzCboJflfSm4jeAlic52io05KB6mqzc5
   ECTO_USE_SSL: "false"
