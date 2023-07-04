@@ -1,8 +1,6 @@
 roles:
   - src: jnv.unattended-upgrades
     version: v1.7.0
-  - src: mrlesmithjr.manage-lvm
-    version: v0.2.0
   - name: gantsign.oh-my-zsh
     version: "2.4.0"
   - name: geerlingguy.docker

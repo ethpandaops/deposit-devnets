@@ -77,11 +77,11 @@ prometheus_config: |
     - job_name: "consensus_node"
       metrics_path: "/metrics"
       static_configs:
-        - targets: ["beacon:{{ ethereum_node_cl_ports_metrics }}"]
+        - targets: ["lighthouse:{{ ethereum_node_cl_ports_metrics }}"]
           labels:
             instance: "{{ inventory_hostname }}"
     - job_name: "besu"
       static_configs:
-        - targets: ["execution:{{ ethereum_node_el_ports_metrics }}"]
+        - targets: ["besu:{{ ethereum_node_el_ports_metrics }}"]
           labels:
             instance: "{{ inventory_hostname }}"
