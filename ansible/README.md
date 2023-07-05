@@ -53,3 +53,13 @@ Same method to check the versions:
 ```bash
 $ ansible mainnet_geth -b -m shell -a "docker exec geth geth --datadir /data attach --exec web3.version.node"
 ```
+
+### Async Profiler with Besu
+
+```sh
+# Download async profiler on the host. To the directory that is mounted by besu
+sudo sh -c "mkdir /data/besu/async-profiler/ && wget -O /data/besu/async-profiler/async-profiler.tar.gz https://github.com/jvm-profiling-tools/async-profiler/releases/download/v2.9/async-profiler-2.9-linux-x64.tar.gz && cd /data/besu/async-profiler/ && tar -xvzf async-profiler.tar.gz && rm -f /data/besu/async-profiler/async-profiler.tar.gz && chown -R besu:besu /data/besu/async-profiler/"
+
+# Run it from within the docker container
+docker exec -it besu /data/async-profiler/async-profiler-2.9-linux-x64/profiler.sh -e cpu -d 30 -o summary 1
+```
