@@ -29,6 +29,9 @@ besu_container_command_extra_args:
   - --rpc-http-api=ADMIN,DEBUG,ETH,MINER,NET,TRACE,TXPOOL,WEB3
   - --sync-mode=FULL
   - --data-storage-format=BONSAI
+  - --tx-pool-limit-by-account-percentage=1
+  - --kzg-trusted-setup=/network-config/trusted_setup.txt
+  - --rpc-http-max-active-connections=250
 
 # role: ethpandaops.general.prometheus
 prometheus_config: |
