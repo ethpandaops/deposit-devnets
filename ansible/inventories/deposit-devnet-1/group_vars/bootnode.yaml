@@ -33,6 +33,8 @@ lighthouse_container_volumes:
 lighthouse_container_command_extra_args:
   - --testnet-dir=/network-config
   - --debug-level=debug
+  - --prune-payloads=false
+  - --dummy-eth1
 lighthouse_validator_container_volumes:
   - "{{ lighthouse_validator_datadir }}:/validator-data"
   - "{{ eth_testnet_config_dir }}:/network-config:ro"
@@ -71,6 +73,9 @@ besu_container_command_extra_args:
   - --rpc-http-api=ADMIN,DEBUG,ETH,MINER,NET,TRACE,TXPOOL,WEB3
   - --sync-mode=FULL
   - --data-storage-format=BONSAI
+  - --tx-pool-limit-by-account-percentage=1
+  - --kzg-trusted-setup=/network-config/trusted_setup.txt
+  - --rpc-http-max-active-connections=250
 
 # role: ethpandaops.general.prometheus
 prometheus_config: |

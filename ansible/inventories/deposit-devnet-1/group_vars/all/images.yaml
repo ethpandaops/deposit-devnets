@@ -1,6 +1,6 @@
 default_ethereum_client_images:
-  besu: kevinbogner/6110-besu:0403
-  lighthouse: kevinbogner/6110-lh:0410
+  besu: ethpandaops/besu:eip-4844-6110-04dc4d2
+  lighthouse: kevinbogner/6110-lh:v1.1.2debug
 
 default_tooling_images:
   ethereum_metrics_exporter: ethpandaops/ethereum-metrics-exporter:0.21.0
