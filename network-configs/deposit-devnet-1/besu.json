@@ -14,8 +14,9 @@
     "preMergeForkBlock": 0,
     "terminalTotalDifficulty": 0,
     "depositContractAddress": "0x4242424242424242424242424242424242424242",
-    "shanghaiTime": 1681991544,
-    "experimentaleipstime": 1681991928,
+    "shanghaiTime": 1688381999,
+    "cancunTime": 1688382383,
+    "experimentaleipstime": 1688382767,
     "ethash": {}
   },
   "alloc": {
@@ -851,5 +852,5 @@
   "nonce": "0x1234",
   "mixhash": "0x0000000000000000000000000000000000000000000000000000000000000000",
   "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
-  "timestamp": "1681991100"
+  "timestamp": "1688381555"
 }
