@@ -3,6 +3,9 @@ blockscout_container_image: blockscout/blockscout:5.2.0
 blockscout_container_volumes:
   - "{{ eth_testnet_config_dir }}/chainspec.json:/network-config/chainspec.json:ro"
 
+blockscout_container_ports:
+  - "4000:4000"
+
 blockscout_container_env:
   MIX_ENV: prod
   PORT: '4000'
