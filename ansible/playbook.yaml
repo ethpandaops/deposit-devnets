@@ -75,3 +75,9 @@
   roles:
     - role: ethpandaops.general.blockscout
       tags: [blockscout]
+
+- hosts: bootnode
+  become: true
+  roles:
+    - role: eth_inventory_web
+      tags: [eth_inventory_web]
