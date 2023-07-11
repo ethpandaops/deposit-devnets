@@ -1,0 +1,9 @@
+besu_container_command_extra_args:
+  - --genesis-file=/network-config/besu.json
+  - --bootnodes={{ ethereum_el_bootnode }}
+  - --rpc-http-api=ADMIN,DEBUG,ETH,MINER,NET,TRACE,TXPOOL,WEB3
+  - --sync-mode=FULL
+  - --data-storage-format=FOREST
+  - --tx-pool-limit-by-account-percentage=1
+  - --kzg-trusted-setup=/network-config/trusted_setup.txt
+  - --rpc-http-max-active-connections=250
