@@ -13,8 +13,10 @@ blockscout_container_env:
   # RPC Endpoint
   ETHEREUM_JSONRPC_VARIANT: besu
   ETHEREUM_JSONRPC_HTTP_URL: http://besu:8545
-  ETHEREUM_JSONRPC_WS_URL: ws://besu:8545
+  # ETHEREUM_JSONRPC_WS_URL: ws://besu:8545
   ETHEREUM_JSONRPC_TRACE_URL: http://besu:8545
+  ETHEREUM_JSONRPC_TRANSPORT: http
+  ETHEREUM_JSONRPC_DISABLE_ARCHIVE_BALANCES: "false"
   # Network config
   NETWORK: Ethereum
   CHAIN_SPEC_PATH: /network-config/chainspec.json
