@@ -93,6 +93,7 @@ bootstrap_default_user_authorized_keys_github_all:
   - samcm
   - savid
   - skylenet
+  - naviechan
 bootstrap_default_user_authorized_keys_github: >
   {{
     (bootstrap_default_user_authorized_keys_github_all | default([])) +
