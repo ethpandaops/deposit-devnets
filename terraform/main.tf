@@ -29,21 +29,33 @@ terraform {
   }
 }
 
+provider "digitalocean" {
+  http_retry_max = 20
+}
+
+provider "cloudflare" {
+  api_token = var.cloudflare_api_token
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////
 //                                        VARIABLES
 ////////////////////////////////////////////////////////////////////////////////////////
+variable "cloudflare_api_token" {
+  type        = string
+  sensitive   = true
+  description = "Cloudflare API Token"
+}
 
 variable "ethereum_network" {
   type    = string
-  default = "deposit-devnets"
+  default = "deposit-devnet-1"
 }
 
 variable "base_cidr_block" {
-  default = "10.76.0.0/16"
+  default = "10.80.0.0/16"
 }
 ////////////////////////////////////////////////////////////////////////////////////////
-//                                        LOCALS
+//                                        LOCALS                                      
 ////////////////////////////////////////////////////////////////////////////////////////
 locals {
   vm_groups = [

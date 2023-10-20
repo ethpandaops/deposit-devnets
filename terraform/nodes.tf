@@ -14,7 +14,7 @@ variable "lighthouse_geth" {
     name            = "lighthouse-geth"
     count           = 0
     validator_start = 0
-    validator_end   = 100
+    validator_end   = 0
   }
 }
 

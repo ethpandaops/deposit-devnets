@@ -49,19 +49,19 @@ locals {
     for vm_group in local.vm_groups :
     [
       for i in range(0, vm_group.count) : {
-      group_name = "${vm_group.name}"
-      id         = "${vm_group.name}-${i + 1}"
-      vms = {
-        "${i + 1}" = {
-          labels = "group_name:${vm_group.name},val_start:${vm_group.validator_start + (i * (vm_group.validator_end -
+        group_name = "${vm_group.name}"
+        id         = "${vm_group.name}-${i + 1}"
+        vms = {
+          "${i + 1}" = {
+            labels = "group_name:${vm_group.name},val_start:${vm_group.validator_start + (i * (vm_group.validator_end -
               vm_group.validator_start) / vm_group.count)},val_end:${min(vm_group.validator_start + ((i + 1) * (vm_group.validator_end -
             vm_group.validator_start) / vm_group.count), vm_group.validator_end)}"
-          location     = element(var.hetzner_regions, i % length(var.hetzner_regions))
-          size         = try(vm_group.size, local.hcloud_default_server_type)
-          ansible_vars = try(vm_group.ansible_vars, null)
+            location     = element(var.hetzner_regions, i % length(var.hetzner_regions))
+            size         = try(vm_group.size, local.hcloud_default_server_type)
+            ansible_vars = try(vm_group.ansible_vars, null)
+          }
         }
       }
-    }
     ]
   ])
 }
@@ -69,7 +69,7 @@ locals {
 locals {
   hcloud_default_location    = "nbg1"
   hcloud_default_image       = "debian-12"
-  hcloud_default_server_type = "cpx21"
+  hcloud_default_server_type = "cpx31"
   hcloud_global_labels = [
     "Owner:Devops",
     "EthNetwork:${var.ethereum_network}"
@@ -196,25 +196,6 @@ resource "cloudflare_record" "server_record_beacon" {
   ttl     = 120
 }
 
-resource "cloudflare_record" "dns-entry" {
-  for_each = {
-    for vm in local.digitalocean_vms : "${vm.id}" => vm
-  }
-  zone_id = data.sops_file.cloudflare.data["zones.ethpandaops-io.zone_id"]
-  name    = "${each.value.name}.${data.sops_file.cloudflare.data["zones.ethpandaops-io.domain"]}"
-  type    = "A"
-  value   = "${hcloud_server.main[each.value.id].ipv4_address}"
-  proxied = false
-}
-
-
-resource "cloudflare_record" "dns-entry-bootnode-wildcard" {
-  zone_id = data.sops_file.cloudflare.data["zones.ethpandaops-io.zone_id"]
-  name    = "*.${var.ethereum_network}"
-  type    = "CNAME"
-  value   = "${var.ethereum_network}.${data.sops_file.cloudflare.data["zones.ethpandaops-io.domain"]}"
-  proxied = false
-}
 ////////////////////////////////////////////////////////////////////////////////////////
 //                          GENERATED FILES AND OUTPUTS
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -230,18 +211,18 @@ resource "local_file" "ansible_inventory" {
       hosts = merge(
         {
           for key, server in hcloud_server.main : "${key}" => {
-          ip              = server.ipv4_address
-          group           = server.labels.group_name
-          validator_start = server.labels.val_start
-          validator_end   = server.labels.val_end
-          tags            = server.labels
-          hostname        = split(".", key)[0]
-          cloud           = "hetzner"
-          region          = server.datacenter
-        }
+            ip              = server.ipv4_address
+            group           = server.labels.group_name
+            validator_start = server.labels.val_start
+            validator_end   = server.labels.val_end
+            tags            = server.labels
+            hostname        = split(".", key)[0]
+            cloud           = "hetzner"
+            region          = server.datacenter
+          }
         }
       )
     }
   )
-  filename = "../../ansible/inventories/devnet-0/inventory.ini"
+  filename = "../ansible/inventories/deposit-devnet-1/inventory.ini"
 }

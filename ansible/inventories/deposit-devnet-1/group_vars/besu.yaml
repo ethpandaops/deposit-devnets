@@ -14,6 +14,7 @@ ethereum_node_el: besu
 
 # role: ethpandaops.general.besu
 besu_container_pull: true
+besu_container_name: execution
 besu_container_image: "{{ default_ethereum_client_images.besu }}"
 besu_container_env:
   VIRTUAL_HOST: "{{ ethereum_node_rcp_hostname }}"
@@ -33,7 +34,6 @@ besu_container_command_extra_args:
   - --sync-mode=FULL
   - --data-storage-format=BONSAI
   - --tx-pool-limit-by-account-percentage=1
-  - --kzg-trusted-setup=/network-config/trusted_setup.txt
   - --rpc-http-max-active-connections=250
 
 # role: ethpandaops.general.prometheus
@@ -83,11 +83,11 @@ prometheus_config: |
     - job_name: "consensus_node"
       metrics_path: "/metrics"
       static_configs:
-        - targets: ["lighthouse:{{ ethereum_node_cl_ports_metrics }}"]
+        - targets: ["beacon:{{ ethereum_node_cl_ports_metrics }}"]
           labels:
             instance: "{{ inventory_hostname }}"
     - job_name: "besu"
       static_configs:
-        - targets: ["besu:{{ ethereum_node_el_ports_metrics }}"]
+        - targets: ["execution:{{ ethereum_node_el_ports_metrics }}"]
           labels:
             instance: "{{ inventory_hostname }}"
